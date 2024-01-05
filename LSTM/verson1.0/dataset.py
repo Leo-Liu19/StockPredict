@@ -9,12 +9,14 @@ from parser_my import args
 def getData(corpusFile,sequence_length,batchSize):  # batchSize设置为64
     # 数据预处理 ，去除id、股票代码、前一天的收盘价、交易日期等对训练无用的无效数据
     stock_data = read_csv(corpusFile)
-    stock_data.drop('ts_code', axis=1, inplace=True)  # 删除第二列’股票代码‘
-    stock_data.drop('id', axis=1, inplace=True)  # 删除第一列’id‘
-    stock_data.drop('pre_close', axis=1, inplace=True)  # 删除列’pre_close‘
-    stock_data.drop('trade_date', axis=1, inplace=True)  # 删除列’trade_date‘
-    #stock_data.drop('change', axis=1, inplace=True)
-    #stock_data.drop('pct_chg', axis=1, inplace=True)
+    stock_data.drop('date', axis=1, inplace=True)  # 删除第二列’股票代码‘
+    #stock_data.drop('ts_code', axis=1, inplace=True)  # 删除第二列’股票代码‘
+    # stock_data.drop('id', axis=1, inplace=True)  # 删除第一列’id‘
+    # stock_data.drop('pre_close', axis=1, inplace=True)  # 删除列’pre_close‘
+    # stock_data.drop('trade_date', axis=1, inplace=True)  # 删除列’trade_date‘
+    #stock_data.drop('score', axis=1, inplace=True)
+
+
 
 
     close_max = stock_data['close'].max() #收盘价的最大值
